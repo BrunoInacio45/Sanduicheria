@@ -24,8 +24,8 @@ public class ConexaoBancoDeDados {
     private Connection c = null;
     private ConectaBanco acaoConectar = null;
 
-    private String usuarioBanco = "postgres";
-    private String senhaBanco = "nicolas191198";
+    private String usuarioBanco = "banco";
+    private String senhaBanco = "senha";
 
     private ConexaoBancoDeDados(String banco) {
         try {
