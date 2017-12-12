@@ -24,10 +24,10 @@ public class ConexaoBancoDeDados {
     private Connection c = null;
     private ConectaBanco acaoConectar = null;
 
-    private String usuarioBanco = "banco";
-    private String senhaBanco = "senha";
+    private String usuarioBanco = "";//"postgres";
+    private String senhaBanco = "";//"nicolas191198";
 
-    private ConexaoBancoDeDados(String banco) {
+    private ConexaoBancoDeDados(String banco, String usuarioBanco, String senhaBanco) {
         try {
             switch (banco) {
                 case "mysql":
@@ -47,13 +47,50 @@ public class ConexaoBancoDeDados {
 
                     break;
             }
-            if (acaoConectar != null) {
-                c = acaoConectar.ConectarAoBanco();
+            try {
+                if (acaoConectar != null) {
+                    c = acaoConectar.ConectarAoBanco();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                c = null;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Connection getC() {
+        return c;
+    }
+
+    public void setC(Connection c) {
+        this.c = c;
+    }
+
+    public ConectaBanco getAcaoConectar() {
+        return acaoConectar;
+    }
+
+    public void setAcaoConectar(ConectaBanco acaoConectar) {
+        this.acaoConectar = acaoConectar;
+    }
+
+    public String getUsuarioBanco() {
+        return usuarioBanco;
+    }
+
+    public void setUsuarioBanco(String usuarioBanco) {
+        this.usuarioBanco = usuarioBanco;
+    }
+
+    public String getSenhaBanco() {
+        return senhaBanco;
+    }
+
+    public void setSenhaBanco(String senhaBanco) {
+        this.senhaBanco = senhaBanco;
     }
 
     public String getDescProduto(int codprod) {
@@ -284,10 +321,23 @@ public class ConexaoBancoDeDados {
         }
     }
 
-    public static ConexaoBancoDeDados getInstance() {
+    public static ConexaoBancoDeDados getInstance(String nameBd, String user, String password) {
         if (instancia == null) {
-            instancia = new ConexaoBancoDeDados("psql");
+
+            instancia = new ConexaoBancoDeDados(nameBd, user, password);
+
         }
+        return instancia;
+    }
+
+    public static ConexaoBancoDeDados getInstance() {
+
+        return instancia;
+
+    }
+
+    public static ConexaoBancoDeDados clearInstance() {
+        instancia = null;
         return instancia;
     }
 
