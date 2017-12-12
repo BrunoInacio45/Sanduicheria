@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package DAO;
 
 import Model.Cliente;
 import Model.Pedido;
@@ -127,7 +127,7 @@ public class ConexaoBancoDeDados {
 
         try {
             Statement stmt = c.createStatement();
-            ResultSet resultado = stmt.executeQuery("select * from public.produto");
+            ResultSet resultado = stmt.executeQuery("select * from public.produto where codProd not in (-4,-5,-6)");
 
             while (resultado.next()) {
                 produtos.add(new Produto(resultado.getInt("codProd"), resultado.getString("descprod"), resultado.getFloat("vlrprod"), resultado.getInt("qtdprod")));
@@ -145,7 +145,7 @@ public class ConexaoBancoDeDados {
 
         try {
             Statement stmt = c.createStatement();
-            ResultSet resultado = stmt.executeQuery("select * from produto where codprod in (6,7,8)");
+            ResultSet resultado = stmt.executeQuery("select * from produto where codprod in (-4,-5,-6)");
 
             while (resultado.next()) {
                 produtos.add(new Produto(resultado.getInt("codprod"), resultado.getString("descprod"), resultado.getFloat("vlrprod"), resultado.getInt("qtdprod")));
@@ -163,7 +163,7 @@ public class ConexaoBancoDeDados {
 
         try {
             Statement stmt = c.createStatement();
-            ResultSet resultado = stmt.executeQuery("select * from public.clientes");
+            ResultSet resultado = stmt.executeQuery("select * from clientes;");
 
             while (resultado.next()) {
                 clis.add(new Cliente(resultado.getString("codcli"), resultado.getString("nomecli"), resultado.getString("telefone"), resultado.getString("email")));

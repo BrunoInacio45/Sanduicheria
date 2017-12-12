@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package DAO;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -20,7 +20,7 @@ public class ConectaMySQL extends ConectaBanco {
 
     @Override
     public Connection ConectarAoBanco() throws Exception {
-        return DriverManager.getConnection("jdbc:mysql://localhost/clinicamedica", usuarioBanco, senhaBanco);
+        return DriverManager.getConnection("jdbc:mysql://localhost/public", usuarioBanco, senhaBanco);
 
     }
 
