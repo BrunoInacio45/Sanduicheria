@@ -21,6 +21,7 @@ public class CabecalhoPedido extends javax.swing.JFrame {
     private void populaComboBox() {
         ArrayList<Cliente> clis = Cliente.getClientes();
         for (Cliente cli : clis) {
+            System.out.println(cli.getNomecli());
             cbClis.addItem(cli);
         }
     }
