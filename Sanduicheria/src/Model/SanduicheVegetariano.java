@@ -9,13 +9,13 @@ package Model;
  *
  */
 // codprod = 4
-public class SanduicheVegetariano extends Sanduiche{
-    
-    public float getPreco(){
-        return c.getPrecoProduto(4);
+public class SanduicheVegetariano extends Sanduiche {
+
+    public float getPreco() {
+        return c.getPrecoProduto(-2);
     }
-    
-    public String getDescricao(){
+
+    public String getDescricao() {
         return "Sanduiche Vegetariano: Pão Francês, alface, rúcula, mussarela, tomate seco, milho, ovo frito";
     }
 }

@@ -9,13 +9,13 @@ package Model;
  *
  */
 // codprod = 3
-public class SanduicheArabe extends Sanduiche{
-    
-    public float getPreco(){
-        return c.getPrecoProduto(3);
+public class SanduicheArabe extends Sanduiche {
+
+    public float getPreco() {
+        return c.getPrecoProduto(-1);
     }
-    
-    public String getDescricao(){
+
+    public String getDescricao() {
         return "Sanduiche Árabe (Kebab): Pão Sírio, carne assada, molho de Kefir, rúcula";
     }
 }

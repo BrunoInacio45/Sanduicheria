@@ -5,7 +5,7 @@
  */
 package Model;
 
-import Controller.ConexaoBancoDeDados;
+import DAO.ConexaoBancoDeDados;
 import java.util.ArrayList;
 
 /**

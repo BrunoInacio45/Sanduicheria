@@ -9,8 +9,8 @@ package Model;
  *
  */
 // codprod = 8
-public class AdicionalMolhoAgridoce extends Adicional{
-    
+public class AdicionalMolhoAgridoce extends Adicional {
+
     public AdicionalMolhoAgridoce(Sanduiche sanduiche) {
         super(sanduiche);
     }
@@ -22,7 +22,7 @@ public class AdicionalMolhoAgridoce extends Adicional{
 
     @Override
     public float getPreco() {
-        return sanduiche.getPreco() + c.getPrecoProduto(8);
+        return sanduiche.getPreco() + c.getPrecoProduto(-5);
     }
-    
+
 }
