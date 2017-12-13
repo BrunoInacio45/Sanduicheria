@@ -8,6 +8,7 @@ package View;
 import Controller.ConexaoBancoDeDados;
 import Model.Pedido;
 import Model.PedidoItem;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -186,11 +187,14 @@ public class NotaDeCompras extends javax.swing.JFrame {
         vlrTroco.setText("0");
         ArrayList<PedidoItem> x = ConexaoBancoDeDados.getInstance().getItensPedido(Integer.parseInt(JComboPedidos.getSelectedItem().toString()));
         ArrayList<Pedido> ped = ConexaoBancoDeDados.getInstance().getPedidos();
+        DecimalFormat df = new DecimalFormat("#0.00");
         for (Pedido pedx : ped) {
             if (pedx.getNuped() == Integer.parseInt(JComboPedidos.getSelectedItem().toString())) {
-                vlrTotal.setText("R$ " + String.valueOf(pedx.getVlrnota()));
-                vlrPago.setText("R$ " + String.valueOf(pedx.getValorPago()));
-                vlrTroco.setText("R$ " + String.valueOf(pedx.getValorPago() - pedx.getVlrnota()));
+                vlrTotal.setText("R$ " + df.format(pedx.getVlrnota()));
+                vlrPago.setText("R$ " + df.format(pedx.getValorPago()));
+                vlrTroco.setText("R$ " + ((df.format(Math.abs(pedx.getValorPago() - pedx.getVlrnota())))));
+//                System.out.println(pedx.getValorPago() + " - " + pedx.getVlrnota());
+//                System.out.println(df.format(pedx.getValorPago() - pedx.getVlrnota()));
             }
         }
 
