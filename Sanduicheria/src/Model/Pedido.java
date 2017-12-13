@@ -115,6 +115,10 @@ public class Pedido {
 
     }
 
+    public String executarPagamento(PagamentoCommand pagamento) {
+        return pagamento.processaCompra(this);
+    }
+
 //    public void teste(){
 //        while(this.getTrocoEmNotas().getNext()!=null){
 //            System.out.println(this.getTrocoEmNotas().getNext().getNotaMoeda());

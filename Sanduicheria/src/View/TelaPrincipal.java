@@ -59,7 +59,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Cadastrar nota");
+        jButton2.setText("Pedido Realizados");
         jButton2.setMinimumSize(new java.awt.Dimension(136, 32));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
