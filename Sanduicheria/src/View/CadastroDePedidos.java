@@ -331,7 +331,7 @@ public class CadastroDePedidos extends javax.swing.JFrame {
 
     private void cbItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbItensActionPerformed
         // TODO add your handling code here:
-        if (((Produto) this.cbItens.getSelectedItem()).getCodprod() == 3 || ((Produto) this.cbItens.getSelectedItem()).getCodprod() == 4 || ((Produto) this.cbItens.getSelectedItem()).getCodprod() == 5) {
+        if (((Produto) this.cbItens.getSelectedItem()).getCodprod() == -1 || ((Produto) this.cbItens.getSelectedItem()).getCodprod() == -2 || ((Produto) this.cbItens.getSelectedItem()).getCodprod() == -3) {
             this.cbAdicional.setVisible(true);
         } else {
             this.cbAdicional.setVisible(false);
