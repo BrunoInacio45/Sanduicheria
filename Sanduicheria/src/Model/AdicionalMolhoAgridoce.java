@@ -11,18 +11,23 @@ package Model;
 // codprod = 8
 public class AdicionalMolhoAgridoce extends Adicional {
 
-    public AdicionalMolhoAgridoce(Sanduiche sanduiche) {
+    public AdicionalMolhoAgridoce(Produto sanduiche) {
         super(sanduiche);
     }
+//
+//    @Override
+//    public String getDescricao() {
+//        return sanduiche.getDescricao() + " com Molho agridoce";
+//    }
+//
+//    @Override
+//    public float getPreco() {
+//        return sanduiche.getPreco() + c.getPrecoProduto(-5);
+//    }
 
     @Override
-    public String getDescricao() {
-        return sanduiche.getDescricao() + " com Molho agridoce";
-    }
-
-    @Override
-    public float getPreco() {
-        return sanduiche.getPreco() + c.getPrecoProduto(-5);
+    public float getVlrprod() {
+        return sanduiche.getVlrprod() + c.getPrecoProduto(-5);
     }
 
 }

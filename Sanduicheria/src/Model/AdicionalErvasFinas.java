@@ -11,18 +11,22 @@ package Model;
 // codprod = 7
 public class AdicionalErvasFinas extends Adicional {
 
-    public AdicionalErvasFinas(Sanduiche sanduiche) {
+    public AdicionalErvasFinas(Produto sanduiche) {
         super(sanduiche);
     }
 
+//    @Override
+//    public String getDescricao() {
+//        return sanduiche.getDescricao() + " com Ervas Finas";
+//    }
+//
+//    @Override
+//    public float getPreco() {
+//        return sanduiche.getPreco() + c.getPrecoProduto(-6);
+//    }
     @Override
-    public String getDescricao() {
-        return sanduiche.getDescricao() + " com Ervas Finas";
-    }
-
-    @Override
-    public float getPreco() {
-        return sanduiche.getPreco() + c.getPrecoProduto(-6);
+    public float getVlrprod() {
+        return sanduiche.getVlrprod() + c.getPrecoProduto(-6);
     }
 
 }

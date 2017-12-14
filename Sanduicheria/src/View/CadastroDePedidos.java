@@ -5,6 +5,10 @@
  */
 package View;
 
+import Model.Adicional;
+import Model.AdicionalCreamCheese;
+import Model.AdicionalErvasFinas;
+import Model.AdicionalMolhoAgridoce;
 import Model.NTrocoNotas;
 import Model.PagamentoAVista;
 import Model.PagamentoCredito;
@@ -12,6 +16,7 @@ import Model.PagamentoDebito;
 import Model.Pedido;
 import Model.PedidoItem;
 import Model.Produto;
+import Model.Sanduiche;
 import Model.TrocoNotas;
 import java.util.ArrayList;
 import java.util.Date;
@@ -67,7 +72,7 @@ public class CadastroDePedidos extends javax.swing.JFrame {
 
     private void populaComboBoxAdicionais() {
         ArrayList<Produto> adds = Produto.getAdicionais();
-        cbAdicional.addItem(new Produto(-1, "-", 0, 0));
+        cbAdicional.addItem(new Produto(-10, "-", 0, 0));
         for (Produto p : adds) {
             cbAdicional.addItem(p);
         }
@@ -82,6 +87,7 @@ public class CadastroDePedidos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -102,9 +108,9 @@ public class CadastroDePedidos extends javax.swing.JFrame {
         btConsultar = new javax.swing.JButton();
         TPago = new javax.swing.JTextField();
         LbTPago = new javax.swing.JLabel();
-        RdAVista = new javax.swing.JRadioButton();
         RdCredito = new javax.swing.JRadioButton();
         RdDebito = new javax.swing.JRadioButton();
+        RdAVista = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -176,20 +182,9 @@ public class CadastroDePedidos extends javax.swing.JFrame {
             }
         });
 
-        LbTPago.setText("Total Pago");
+        LbTPago.setText("Total Pago:");
 
-        RdAVista.setText("À Vista");
-        RdAVista.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                RdAVistaStateChanged(evt);
-            }
-        });
-        RdAVista.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RdAVistaActionPerformed(evt);
-            }
-        });
-
+        btnGroup.add(RdCredito);
         RdCredito.setText("Credito");
         RdCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,10 +192,19 @@ public class CadastroDePedidos extends javax.swing.JFrame {
             }
         });
 
+        btnGroup.add(RdDebito);
         RdDebito.setText("Debito");
         RdDebito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RdDebitoActionPerformed(evt);
+            }
+        });
+
+        btnGroup.add(RdAVista);
+        RdAVista.setText("À vista");
+        RdAVista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RdAVistaActionPerformed(evt);
             }
         });
 
@@ -209,35 +213,35 @@ public class CadastroDePedidos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(263, 263, 263)
+                .addComponent(jLabel1)
+                .addGap(127, 281, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LbTPago)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TPago, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnSalvar)
-                            .addGap(115, 115, 115)
-                            .addComponent(btnExcluir)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLimpar))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(402, 402, 402)
-                            .addComponent(tfQtdItem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btConsultar, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(LbTPago)
-                                .addComponent(TPago, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(12, 12, 12))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(105, 105, 105)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbValorTotal))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(109, 109, 109)
-                                    .addComponent(lbStatus)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSalvar)
+                        .addGap(115, 115, 115)
+                        .addComponent(btnExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbValorTotal))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(109, 109, 109)
+                                .addComponent(lbStatus))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,17 +260,18 @@ public class CadastroDePedidos extends javax.swing.JFrame {
                                     .addComponent(cbAdicional, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(118, 118, 118)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(RdAVista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(RdCredito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(RdDebito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfQtdItem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btConsultar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(RdCredito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(RdDebito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(RdAVista))
                 .addGap(18, 18, 18))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(263, 263, 263)
-                .addComponent(jLabel1)
-                .addGap(127, 127, 127))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,19 +294,18 @@ public class CadastroDePedidos extends javax.swing.JFrame {
                             .addComponent(tfQtdItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(RdAVista))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btAddItem)
                             .addComponent(btConsultar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btAddItem)
-                                .addComponent(RdDebito)))))
+                            .addComponent(RdDebito))))
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbAdicional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RdCredito))
-                .addGap(9, 9, 9)
-                .addComponent(LbTPago)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LbTPago))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -334,25 +338,35 @@ public class CadastroDePedidos extends javax.swing.JFrame {
     private void btAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddItemActionPerformed
         // TODO add your handling code here:
 
-        int codProdAdd = ((Produto) this.cbItens.getSelectedItem()).getCodprod(); // cod produto a ser adicionado no pedido
+        int codProdAdd = ((Produto) this.cbItens.getSelectedItem()).getCodprod();
         float vlrProdAdd = ((Produto) this.cbItens.getSelectedItem()).getVlrprod(); // valor do prod a ser adicionado no pedido
         int qtdProdAdd = Integer.parseInt(this.tfQtdItem.getText()); // qtdade do prod
-        float novoValorPed = this.ped.getVlrnota() + vlrProdAdd * qtdProdAdd;
-        this.ped.setVlrnota(novoValorPed);
-
-//        this.ped.setTrocoEmNotas(n100);
-//        System.out.println(TPago.getText());
-//        System.out.println(this.ped.calcTroco());
-//        this.ped.getTrocoEmNotas().notasTroco(this.ped.calcTroco());
-//        ArrayList<String> aS = this.ped.getTrocoEmNotas().getNotas();
-//       this.ped.getTrocoEmNotas().notasTroco(this.ped.calcTroco());;
-        // adiciona um novo item de pedido na lista (arraylist)
+//        float novoValorPed = this.ped.getVlrnota() + vlrProdAdd * qtdProdAdd;
+//        this.ped.setVlrnota(novoValorPed);
         itens.add(new PedidoItem(this.ped.getNuped(), codProdAdd, qtdProdAdd));
 
-        if (this.cbAdicional.isVisible() && ((Produto) this.cbAdicional.getSelectedItem()).getCodprod() != -1) {
-            itens.add(new PedidoItem(this.ped.getNuped(), ((Produto) this.cbAdicional.getSelectedItem()).getCodprod(), 1));
+        if (this.cbAdicional.isVisible() && ((Produto) this.cbAdicional.getSelectedItem()).getCodprod() != -10) {
+//            itens.add(new PedidoItem(this.ped.getNuped(), ((Produto) this.cbAdicional.getSelectedItem()).getCodprod(), 1));
+            Produto prod = ((Produto) this.cbItens.getSelectedItem());// cod produto a ser adicionado no pedido
+            if (codProdAdd == -1 || codProdAdd == -2 || codProdAdd == -3) {
+//            ((Produto) this.cbItens.getSelectedItem()).setVlrprod(new AdicionalCreamCheese(((Produto) this.cbItens.getSelectedItem())));
+                System.out.println("before" + prod.getVlrprod());
+                Produto adicional = (((Produto) this.cbAdicional.getSelectedItem()));
+                if (adicional.getCodprod() == -4) {
+                    prod.setVlrprod(new AdicionalCreamCheese(prod).getVlrprod());
+                } else if (adicional.getCodprod() == -6) {
+                    prod.setVlrprod(new AdicionalErvasFinas(prod).getVlrprod());
+                } else if (adicional.getCodprod() == -5) {
+                    prod.setVlrprod(new AdicionalMolhoAgridoce(prod).getVlrprod());
+                }
+
+                System.out.println(prod.getVlrprod());
+                vlrProdAdd = prod.getVlrprod();
+            }
         }
 
+        float novoValorPed = this.ped.getVlrnota() + vlrProdAdd * qtdProdAdd;
+        this.ped.setVlrnota(novoValorPed);
         // atualiza o valor da nota
         this.ped.setVlrnota(novoValorPed);
 
@@ -364,14 +378,7 @@ public class CadastroDePedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_btAddItemActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
-//        this.ped.setValorPago(Float.parseFloat(TPago.getText()));
-//        ArrayList<String> aS = new ArrayList<>();
-//        this.ped.getTrocoEmNotas().notasTroco(this.ped.calcTroco(), aS);//calcula o troco e insere o valor no array de String aS
-//        String aux = "Troco:\n";
-//        for (String y : aS) {
-//            aux = aux + y + "\n";
-//        }
+
         int flag = 0;
         String aux = "";
         if (RdAVista.isSelected() && !RdDebito.isSelected() && !RdCredito.isSelected()) {
@@ -380,7 +387,6 @@ public class CadastroDePedidos extends javax.swing.JFrame {
 
             flag++;
         } else if (!RdAVista.isSelected() && RdDebito.isSelected() && !RdCredito.isSelected()) {
-//            this.ped.setValorPago(Float.parseFloat(TPago.getText()));
             aux = ped.executarPagamento(new PagamentoDebito());
 
             flag++;
@@ -397,7 +403,7 @@ public class CadastroDePedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void cbItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbItensActionPerformed
-        // TODO add your handling code here:
+
         if (((Produto) this.cbItens.getSelectedItem()).getCodprod() == -1 || ((Produto) this.cbItens.getSelectedItem()).getCodprod() == -2 || ((Produto) this.cbItens.getSelectedItem()).getCodprod() == -3) {
             this.cbAdicional.setVisible(true);
         } else {
@@ -420,21 +426,17 @@ public class CadastroDePedidos extends javax.swing.JFrame {
         LbTPago.setVisible(false);
     }//GEN-LAST:event_RdCreditoActionPerformed
 
-    private void RdAVistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RdAVistaActionPerformed
-        // TODO add your handling code here:
-        TPago.setVisible(true);
-        LbTPago.setVisible(true);
-    }//GEN-LAST:event_RdAVistaActionPerformed
-
-    private void RdAVistaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_RdAVistaStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RdAVistaStateChanged
-
     private void RdDebitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RdDebitoActionPerformed
         // TODO add your handling code here:
         TPago.setVisible(false);
         LbTPago.setVisible(false);
     }//GEN-LAST:event_RdDebitoActionPerformed
+
+    private void RdAVistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RdAVistaActionPerformed
+        // TODO add your handling code here:
+        TPago.setVisible(true);
+        LbTPago.setVisible(true);
+    }//GEN-LAST:event_RdAVistaActionPerformed
 
     private void SalvaPedidoBanco() {
         this.ped.gravaPedido();
@@ -492,6 +494,7 @@ public class CadastroDePedidos extends javax.swing.JFrame {
     private javax.swing.JButton btAddItem;
     private javax.swing.JButton btConsultar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.ButtonGroup btnGroup;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<Produto> cbAdicional;

@@ -9,13 +9,18 @@ package Model;
  *
  */
 // codprod = 3
-public class SanduicheArabe extends Sanduiche {
+public class SanduicheArabe extends Produto {
 
-    public float getPreco() {
+    public SanduicheArabe(int codprod, String descrprod, float vlrprod, int qtdprod) {
+        super(codprod, descrprod, vlrprod, qtdprod);
+    }
+
+    @Override
+    public float getVlrprod() {
         return c.getPrecoProduto(-1);
     }
 
-    public String getDescricao() {
-        return "Sanduiche Árabe (Kebab): Pão Sírio, carne assada, molho de Kefir, rúcula";
-    }
+//    public String getDescricao() {
+//        return "Sanduiche Árabe (Kebab): Pão Sírio, carne assada, molho de Kefir, rúcula";
+//    }
 }

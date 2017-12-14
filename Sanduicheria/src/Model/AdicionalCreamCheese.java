@@ -11,18 +11,17 @@ package Model;
 // codprod = 6
 public class AdicionalCreamCheese extends Adicional {
 
-    public AdicionalCreamCheese(Sanduiche sanduiche) {
+    public AdicionalCreamCheese(Produto sanduiche) {
         super(sanduiche);
     }
 
+//    @Override
+//    public String getDescricao() {
+//        return sanduiche.getDescricao() + " com Cream Cheese";
+//    }
     @Override
-    public String getDescricao() {
-        return sanduiche.getDescricao() + " com Cream Cheese";
-    }
-
-    @Override
-    public float getPreco() {
-        return sanduiche.getPreco() + c.getPrecoProduto(-4);
+    public float getVlrprod() {
+        return sanduiche.getVlrprod() + c.getPrecoProduto(-4);
     }
 
 }

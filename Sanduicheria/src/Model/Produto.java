@@ -12,10 +12,13 @@ import java.util.ArrayList;
  *
  */
 public class Produto {
+
     private int codprod;
     private String descrprod;
     private float vlrprod;
     private int qtdprod;
+
+    protected ConexaoBancoDeDados c = ConexaoBancoDeDados.getInstance();
 
     public Produto(int codprod, String descrprod, float vlrprod, int qtdprod) {
         this.codprod = codprod;
@@ -24,11 +27,15 @@ public class Produto {
         this.qtdprod = qtdprod;
     }
 
+    public Produto() {
+
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         return this.descrprod;
     }
-    
+
     public String getDescrprod() {
         return descrprod;
     }
@@ -60,15 +67,13 @@ public class Produto {
     public void setCodprod(int codprod) {
         this.codprod = codprod;
     }
-    
-    
-    
-    public static ArrayList<Produto> getProdutos(){
+
+    public static ArrayList<Produto> getProdutos() {
         return ConexaoBancoDeDados.getInstance().getProdutos();
     }
-    
-    public static ArrayList<Produto> getAdicionais(){
+
+    public static ArrayList<Produto> getAdicionais() {
         return ConexaoBancoDeDados.getInstance().getAdicionais();
     }
-    
+
 }

@@ -8,11 +8,20 @@ package Model;
 /**
  *
  */
-public abstract class Adicional extends Sanduiche{
-    protected Sanduiche sanduiche;
-        
-    public Adicional(Sanduiche sanduiche){
+public abstract class Adicional extends Produto {
+
+    protected Produto sanduiche;
+
+    public Produto getSanduiche() {
+        return sanduiche;
+    }
+
+    public void setSanduiche(Produto sanduiche) {
         this.sanduiche = sanduiche;
     }
-    
+
+    public Adicional(Produto sanduiche) {
+        this.sanduiche = sanduiche;
+    }
+
 }

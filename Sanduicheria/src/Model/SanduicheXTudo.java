@@ -11,11 +11,15 @@ package Model;
 // codprod = 5
 public class SanduicheXTudo extends Sanduiche {
 
-    public float getPreco() {
+    public SanduicheXTudo(int codprod, String descrprod, float vlrprod, int qtdprod) {
+        super(codprod, descrprod, vlrprod, qtdprod);
+    }
+
+    public float getVlrprod() {
         return c.getPrecoProduto(-3);
     }
 
-    public String getDescricao() {
-        return "X-Tudo  Pão, filet mignon, alface, tomate, hamburger, salsicha, ovo frito, milho, batata palha, bacon, mussarela, presunto";
-    }
+//    public String getDescricao() {
+//        return "X-Tudo  Pão, filet mignon, alface, tomate, hamburger, salsicha, ovo frito, milho, batata palha, bacon, mussarela, presunto";
+//    }
 }

@@ -10,12 +10,12 @@ import Controller.ConexaoBancoDeDados;
 /**
  *
  */
-public abstract class Sanduiche {
-    
+public abstract class Sanduiche extends Produto {
+
     protected ConexaoBancoDeDados c = ConexaoBancoDeDados.getInstance();
-    
-    public abstract float getPreco();
-    
-    public abstract String getDescricao();
-    
+
+    public Sanduiche(int codprod, String descrprod, float vlrprod, int qtdprod) {
+        super(codprod, descrprod, vlrprod, qtdprod);
+    }
+
 }
