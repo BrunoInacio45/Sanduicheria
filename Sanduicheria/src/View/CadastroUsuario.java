@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.ConexaoBancoDeDados;
+import DAo.ConexaoBancoDeDados;
 import Model.CadastroDeUsuariosM;
 import javax.swing.JOptionPane;
 
@@ -171,8 +171,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
         } else //INSERIR NA BASE DE DADOS APÓS VALIDAÇÃO
         {
             user.cadastraUsuario();
+            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso");
         }
-        JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso");
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

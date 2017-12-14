@@ -8,19 +8,22 @@ package Model;
 /**
  *
  */
-public abstract class Adicional extends Produto {
+public abstract class Adicional extends AbstractProduto {
 
-    protected Produto sanduiche;
+    protected AbstractProduto sanduiche;
 
-    public Produto getSanduiche() {
+//    public Adicional(int codprod, String descrprod, float vlrprod, int qtdprod) {
+////        /super(codprod, descrprod, vlrprod, qtdprod);
+//    }
+    public Adicional(AbstractProduto sanduiche) {
+        this.sanduiche = sanduiche;
+    }
+
+    public AbstractProduto getSanduiche() {
         return sanduiche;
     }
 
     public void setSanduiche(Produto sanduiche) {
-        this.sanduiche = sanduiche;
-    }
-
-    public Adicional(Produto sanduiche) {
         this.sanduiche = sanduiche;
     }
 

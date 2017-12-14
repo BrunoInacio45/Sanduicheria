@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.ConexaoBancoDeDados;
+import DAo.ConexaoBancoDeDados;
 import javax.swing.SwingUtilities;
 
 /**

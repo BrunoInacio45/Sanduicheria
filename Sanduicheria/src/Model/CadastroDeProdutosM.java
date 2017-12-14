@@ -5,7 +5,7 @@
  */
 package Model;
 
-import Controller.ConexaoBancoDeDados;
+import DAo.ConexaoBancoDeDados;
 
 /**
  *

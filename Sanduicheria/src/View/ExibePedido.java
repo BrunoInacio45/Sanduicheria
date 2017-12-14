@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.ConexaoBancoDeDados;
+import DAo.ConexaoBancoDeDados;
 import Model.Pedido;
 import Model.PedidoItem;
 import Model.Produto;
@@ -29,18 +29,18 @@ public class ExibePedido extends javax.swing.JFrame {
      * Creates new form ExibePedido
      */
     public ExibePedido() {
- 
+
         initComponents();
         this.populaComboBox();
     }
-    
-    private void populaComboBox(){
+
+    private void populaComboBox() {
         ArrayList<Produto> clis = Produto.getProdutos();
-        for(Produto cli : clis){
+        for (Produto cli : clis) {
             jProdutos.addItem(cli);
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

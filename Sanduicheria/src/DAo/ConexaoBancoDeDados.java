@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package DAo;
 
 import Model.Cliente;
 import Model.Pedido;
@@ -185,7 +185,8 @@ public class ConexaoBancoDeDados {
             ResultSet resultado = stmt.executeQuery("select * from itens_pedido where nuped = '" + nuped + "'");
 
             while (resultado.next()) {
-                itens.add(new PedidoItem(resultado.getInt("nuped"), resultado.getInt("codprod"), resultado.getInt("qtdprod")));
+                itens.add(new PedidoItem(resultado.getInt("nuped"), resultado.getInt("codprod"), resultado.getInt("qtdprod"), resultado.getFloat("vlrAdic"), resultado.getString("descAdic")));
+
             }
         } catch (Exception e) {
             e.getStackTrace();
@@ -307,12 +308,12 @@ public class ConexaoBancoDeDados {
         }
     }
 
-    public void cadastraItemPed(int nuped, int codprod, int qtdprod) {
+    public void cadastraItemPed(int nuped, int codprod, int qtdprod, float vlrAdic, String descAdic) {
 
         Statement stmt;
         try {
             stmt = c.createStatement();
-            String query = "insert into public.itens_pedido(nuped,codprod,qtdprod) values ('" + nuped + "' , '" + codprod + "', '" + qtdprod + "')";
+            String query = "insert into public.itens_pedido(nuped,codprod,qtdprod,vlrAdic,descAdic) values ('" + nuped + "' , '" + codprod + "', '" + qtdprod + "', '" + vlrAdic + "', '" + descAdic + "')";
             stmt.executeUpdate(query);
 
         } catch (SQLException ex) {

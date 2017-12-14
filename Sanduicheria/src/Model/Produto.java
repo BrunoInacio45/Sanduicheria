@@ -5,75 +5,27 @@
  */
 package Model;
 
-import Controller.ConexaoBancoDeDados;
+import DAo.ConexaoBancoDeDados;
 import java.util.ArrayList;
 
 /**
  *
  */
-public class Produto {
-
-    private int codprod;
-    private String descrprod;
-    private float vlrprod;
-    private int qtdprod;
-
-    protected ConexaoBancoDeDados c = ConexaoBancoDeDados.getInstance();
+public class Produto extends AbstractProduto {
 
     public Produto(int codprod, String descrprod, float vlrprod, int qtdprod) {
-        this.codprod = codprod;
-        this.descrprod = descrprod;
-        this.vlrprod = vlrprod;
-        this.qtdprod = qtdprod;
-    }
-
-    public Produto() {
-
+        super(codprod, descrprod, vlrprod, qtdprod);
     }
 
     @Override
-    public String toString() {
-        return this.descrprod;
-    }
-
-    public String getDescrprod() {
-        return descrprod;
-    }
-
-    public void setDescrprod(String descrprod) {
-        this.descrprod = descrprod;
-    }
-
     public float getVlrprod() {
-        return vlrprod;
+        return this.vlrprod;
     }
 
-    public void setVlrprod(float vlrprod) {
-        this.vlrprod = vlrprod;
-    }
+    @Override
+    public String getDescrprod() {
+        return this.descrprod;
 
-    public int getQtdprod() {
-        return qtdprod;
-    }
-
-    public void setQtdprod(int qtdprod) {
-        this.qtdprod = qtdprod;
-    }
-
-    public int getCodprod() {
-        return codprod;
-    }
-
-    public void setCodprod(int codprod) {
-        this.codprod = codprod;
-    }
-
-    public static ArrayList<Produto> getProdutos() {
-        return ConexaoBancoDeDados.getInstance().getProdutos();
-    }
-
-    public static ArrayList<Produto> getAdicionais() {
-        return ConexaoBancoDeDados.getInstance().getAdicionais();
     }
 
 }

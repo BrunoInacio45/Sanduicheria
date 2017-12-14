@@ -156,20 +156,18 @@ public class CadastroDeClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Model.Cliente cli = new Cliente(txtCPF.getText(), txtNome.getText(),txtEmail.getText() , txtTelefone.getText());
-        
-        
-        if(cli.validaEntradaDeDados() == false){
-            JOptionPane.showMessageDialog(null,"Insira corretamente os dados do cliente para prossegui.");
+        Model.Cliente cli = new Cliente(txtCPF.getText(), txtNome.getText(), txtEmail.getText(), txtTelefone.getText());
+
+        if (cli.validaEntradaDeDados() == false) {
+            JOptionPane.showMessageDialog(null, "Insira corretamente os dados do cliente para prossegui.");
             //btnLimpar.doClick();
+        } else {
+            cli.cadastraCliente();
+            this.dispose();
+            JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
         }
-        
-        
+
         //SENAO INSERE OS DADOS NA BASE DE DADOS
-        cli.cadastraCliente();
-        this.dispose();
-        JOptionPane.showMessageDialog(null,"Dados cadastrados com sucesso!");
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -179,7 +177,7 @@ public class CadastroDeClientes extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

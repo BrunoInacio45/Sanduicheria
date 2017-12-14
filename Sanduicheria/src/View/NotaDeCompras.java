@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.ConexaoBancoDeDados;
+import DAo.ConexaoBancoDeDados;
 import Model.Pedido;
 import Model.PedidoItem;
 import java.text.DecimalFormat;
@@ -201,8 +201,10 @@ public class NotaDeCompras extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) JProdTable.getModel();
         model.setRowCount(0);
         for (PedidoItem pe : x) {
-            model.addRow(new Object[]{pe.getNuped(), ConexaoBancoDeDados.getInstance().getDescProduto(pe.getCodprod()), pe.getQtdprod(), pe.getQtdprod() * ConexaoBancoDeDados.getInstance().getPrecoProduto(pe.getCodprod())});
+//            model.addRow(new Object[]{pe.getNuped(), ConexaoBancoDeDados.getInstance().getDescProduto(pe.getCodprod()), pe.getQtdprod(), pe.getQtdprod() * ConexaoBancoDeDados.getInstance().getPrecoProduto(pe.getCodprod())});
 //            System.out.println(pe.getNuped() + " " + ConexaoBancoDeDados.getInstance().getDescProduto(pe.getCodprod()) + " " + pe.getQtdprod());
+            model.addRow(new Object[]{pe.getNuped(), pe.getDescAdic(), pe.getQtdprod(), pe.getVlrAdic()});
+
         }
 
         //DefaultTableModel model = (DefaultTableModel) JProdTable.getModel();
